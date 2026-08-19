@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AndroidShotNormalizer - Android Screenshot Resizer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #f4f6fa; color: #333; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { text-align: center; margin-bottom: 20px; color: #2c3e50; }
+    .drop-zone { border: 3px dashed #3498db; border-radius: 15px; padding: 40px; text-align: center; background: #fff; cursor: pointer; transition: all 0.3s; margin-bottom: 20px; }
+    .drop-zone.dragover { background: #eaf2f8; border-color: #2980b9; }
+    .drop-zone input { display: none; }
+    .button-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .btn { padding: 12px 24px; background: #3498db; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
+    .btn:hover { background: #2980b9; }
+    .btn.secondary { background: #95a5a6; }
+    .btn.secondary:hover { background: #7f8c8d; }
+    .status { text-align: center; margin: 15px 0; font-size: 16px; color: #e67e22; min-height: 24px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+    .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+    .card img { width: 100%; height: 200px; object-fit: contain; background: #f8f9fa; }
+    .card .info { padding: 12px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+    .card .info span { display: block; }
+    .card .download { display: block; text-align: center; padding: 10px; background: #27ae60; color: #fff; text-decoration: none; margin-top: auto; transition: background 0.3s; }
+    .card .download:hover { background: #219a52; }
+    @media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>AndroidShotNormalizer</h1>
+      <p style="text-align:center; margin-bottom:20px;">Transform screenshots into store-compliant 16:9 or 9:16 images</p>
+      <div class="drop-zone" id="dropZone">
+          <p>Drag & drop your images here, or click to select</p>
+          <input type="file" id="fileInput" accept="image/*" multiple>
+      </div>
+      <div class="button-group">
+          <button class="btn" id="downloadAllBtn">Download All (ZIP)</button>
+          <button class="btn secondary" id="clearBtn">Clear</button>
+      </div>
+      <div class="status" id="status"></div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+    
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
